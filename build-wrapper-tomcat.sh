@@ -64,7 +64,7 @@ target_home=/tmp/${uuid_name}/target
 serverjre_linux=server-jre-8u192-linux-x64.tar.gz
 serverjre_windows=server-jre-8u192-windows-x64.tar.gz
 
-wrapper_version=3.5.39
+wrapper_version=3.5.39.1
 wrapper_name=wrapper-3.5.39.1.tar.gz
 wrapper_url=https://github.com/rancococ/wrapper/archive/v3.5.39.1.tar.gz
 
