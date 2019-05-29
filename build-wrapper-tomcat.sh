@@ -125,12 +125,10 @@ fun_build_without_jre() {
     log4j2name=$(tar -tf ${source_home}/log4j2.tar.gz | awk -F "/" '{print $1}' | sed -n '1p') && \
     \rm -rf ${source_home}/${log4j2name}/*-javadoc.jar && \
     \rm -rf ${source_home}/${log4j2name}/*-sources.jar && \
+    \rm -rf ${source_home}/${log4j2name}/*-tests.jar && \
     \cp -rf ${source_home}/${log4j2name}/log4j-1.2-api-*.jar ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${source_home}/${log4j2name}/log4j-api-*.jar ${target_home}/wrapper-tomcat/lib/ && \
-    \cp -rf ${source_home}/${log4j2name}/log4j-appserver-*.jar ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${source_home}/${log4j2name}/log4j-core-*.jar ${target_home}/wrapper-tomcat/lib/ && \
-    \cp -rf ${source_home}/${log4j2name}/log4j-jcl-*.jar ${target_home}/wrapper-tomcat/lib/ && \
-    \cp -rf ${source_home}/${log4j2name}/log4j-jul-*.jar ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${source_home}/${log4j2name}/log4j-web-*.jar ${target_home}/wrapper-tomcat/lib/ && \
 
     find ${target_home}/wrapper-tomcat | xargs touch && \
@@ -208,12 +206,10 @@ fun_build_with_jre_linux() {
     log4j2name=$(tar -tf ${source_home}/log4j2.tar.gz | awk -F "/" '{print $1}' | sed -n '1p') && \
     \rm -rf ${source_home}/${log4j2name}/*-javadoc.jar && \
     \rm -rf ${source_home}/${log4j2name}/*-sources.jar && \
+    \rm -rf ${source_home}/${log4j2name}/*-tests.jar && \
     \cp -rf ${source_home}/${log4j2name}/log4j-1.2-api-*.jar ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${source_home}/${log4j2name}/log4j-api-*.jar ${target_home}/wrapper-tomcat/lib/ && \
-    \cp -rf ${source_home}/${log4j2name}/log4j-appserver-*.jar ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${source_home}/${log4j2name}/log4j-core-*.jar ${target_home}/wrapper-tomcat/lib/ && \
-    \cp -rf ${source_home}/${log4j2name}/log4j-jcl-*.jar ${target_home}/wrapper-tomcat/lib/ && \
-    \cp -rf ${source_home}/${log4j2name}/log4j-jul-*.jar ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${source_home}/${log4j2name}/log4j-web-*.jar ${target_home}/wrapper-tomcat/lib/ && \
 
     find ${target_home}/wrapper-tomcat | xargs touch && \
@@ -291,12 +287,10 @@ fun_build_with_jre_windows() {
     log4j2name=$(tar -tf ${source_home}/log4j2.tar.gz | awk -F "/" '{print $1}' | sed -n '1p') && \
     \rm -rf ${source_home}/${log4j2name}/*-javadoc.jar && \
     \rm -rf ${source_home}/${log4j2name}/*-sources.jar && \
+    \rm -rf ${source_home}/${log4j2name}/*-tests.jar && \
     \cp -rf ${source_home}/${log4j2name}/log4j-1.2-api-*.jar ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${source_home}/${log4j2name}/log4j-api-*.jar ${target_home}/wrapper-tomcat/lib/ && \
-    \cp -rf ${source_home}/${log4j2name}/log4j-appserver-*.jar ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${source_home}/${log4j2name}/log4j-core-*.jar ${target_home}/wrapper-tomcat/lib/ && \
-    \cp -rf ${source_home}/${log4j2name}/log4j-jcl-*.jar ${target_home}/wrapper-tomcat/lib/ && \
-    \cp -rf ${source_home}/${log4j2name}/log4j-jul-*.jar ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${source_home}/${log4j2name}/log4j-web-*.jar ${target_home}/wrapper-tomcat/lib/ && \
 
     find ${target_home}/wrapper-tomcat | xargs touch && \
