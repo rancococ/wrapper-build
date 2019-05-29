@@ -110,6 +110,7 @@ fun_build_without_jre() {
     \cp -rf ${source_home}/${tomcatname}/conf/. ${target_home}/wrapper-tomcat/conf/ && \
     \cp -rf ${source_home}/${tomcatname}/lib/. ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${base_dir}/assets/catalina.properties ${target_home}/wrapper-tomcat/conf/ && \
+    \cp -rf ${base_dir}/assets/web.xml ${target_home}/wrapper-tomcat/conf/ && \
     \cp -rf ${base_dir}/assets/server.xml ${target_home}/wrapper-tomcat/conf/ && \
     \cp -rf ${base_dir}/assets/log4j2.xml ${target_home}/wrapper-tomcat/lib/ && \
 
@@ -192,6 +193,7 @@ fun_build_with_jre_linux() {
     \cp -rf ${source_home}/${tomcatname}/conf/. ${target_home}/wrapper-tomcat/conf/ && \
     \cp -rf ${source_home}/${tomcatname}/lib/. ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${base_dir}/assets/catalina.properties ${target_home}/wrapper-tomcat/conf/ && \
+    \cp -rf ${base_dir}/assets/web.xml ${target_home}/wrapper-tomcat/conf/ && \
     \cp -rf ${base_dir}/assets/server.xml ${target_home}/wrapper-tomcat/conf/ && \
     \cp -rf ${base_dir}/assets/log4j2.xml ${target_home}/wrapper-tomcat/lib/ && \
 
@@ -274,6 +276,7 @@ fun_build_with_jre_windows() {
     \cp -rf ${source_home}/${tomcatname}/conf/. ${target_home}/wrapper-tomcat/conf/ && \
     \cp -rf ${source_home}/${tomcatname}/lib/. ${target_home}/wrapper-tomcat/lib/ && \
     \cp -rf ${base_dir}/assets/catalina.properties ${target_home}/wrapper-tomcat/conf/ && \
+    \cp -rf ${base_dir}/assets/web.xml ${target_home}/wrapper-tomcat/conf/ && \
     \cp -rf ${base_dir}/assets/server.xml ${target_home}/wrapper-tomcat/conf/ && \
     \cp -rf ${base_dir}/assets/log4j2.xml ${target_home}/wrapper-tomcat/lib/ && \
 
