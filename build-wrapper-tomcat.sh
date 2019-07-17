@@ -64,9 +64,9 @@ target_home=/tmp/${uuid_name}/target
 serverjre_linux=server-jre-8u192-linux-x64.tar.gz
 serverjre_windows=server-jre-8u192-windows-x64.tar.gz
 
-wrapper_version=3.5.39.1
-wrapper_name=wrapper-3.5.39.1.tar.gz
-wrapper_url=https://github.com/rancococ/wrapper/archive/v3.5.39.1.tar.gz
+wrapper_version=3.5.39.2
+wrapper_name=wrapper-3.5.39.2.tar.gz
+wrapper_url=https://github.com/rancococ/wrapper/archive/v3.5.39.2.tar.gz
 
 tomcat_url=https://mirrors.huaweicloud.com/apache/tomcat/tomcat-8/v8.5.40/bin/apache-tomcat-8.5.40.tar.gz
 tomcat_juli_url=https://mirrors.huaweicloud.com/apache/tomcat/tomcat-8/v8.0.53/bin/extras/tomcat-juli.jar
@@ -76,7 +76,7 @@ catalina_ws_url=https://mirrors.huaweicloud.com/apache/tomcat/tomcat-8/v8.5.40/b
 tomcat_extend_url=https://github.com/rancococ/tomcat-ext/releases/download/v1.0.0/tomcat-extend-1.0.0-SNAPSHOT.jar
 log4j2_url=https://mirrors.huaweicloud.com/apache/logging/log4j/2.11.1/apache-log4j-2.11.1-bin.tar.gz
 
-tomcat_version=8.5.40.4
+tomcat_version=8.5.40.7
 
 arch=x86_64
 
