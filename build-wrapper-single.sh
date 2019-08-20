@@ -71,7 +71,7 @@ wrapper_url=https://github.com/rancococ/wrapper/archive/v3.5.39.2.tar.gz
 jmx_exporter_version=0.12.0
 jmx_exporter_url=https://mirrors.huaweicloud.com/repository/maven/io/prometheus/jmx/jmx_prometheus_javaagent/${jmx_exporter_version}/jmx_prometheus_javaagent-${jmx_exporter_version}.jar
 
-single_version=1.0.5
+single_version=1.0.6
 
 arch=x86_64
 
@@ -96,7 +96,7 @@ fun_build_without_jre() {
 
     wget -c -O ${target_home}/wrapper-single/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar --no-check-certificate ${jmx_exporter_url} && \
     \cp -rf ${base_dir}/assets/jmx_exporter.yml ${target_home}/wrapper-single/exporter/ && \
-    sed -i "/^-server$/i\-javaagent:../exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=8090:../exporter/jmx_exporter.yml" "${target_home}/wrapper-single/conf/wrapper-additional.conf" && \
+    sed -i "/^-server$/i\-javaagent:%WRAPPER_BASE_DIR%/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=9404:%WRAPPER_BASE_DIR%/exporter/jmx_exporter.yml" "${target_home}/wrapper-single/conf/wrapper-additional.conf" && \
 
     find ${target_home}/wrapper-single | xargs touch && \
     find ${target_home}/wrapper-single -type d -print | xargs chmod 755 && \
@@ -148,7 +148,7 @@ fun_build_with_jre_linux() {
 
     wget -c -O ${target_home}/wrapper-single/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar --no-check-certificate ${jmx_exporter_url} && \
     \cp -rf ${base_dir}/assets/jmx_exporter.yml ${target_home}/wrapper-single/exporter/ && \
-    sed -i "/^-server$/i\-javaagent:../exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=8090:../exporter/jmx_exporter.yml" "${target_home}/wrapper-single/conf/wrapper-additional.conf" && \
+    sed -i "/^-server$/i\-javaagent:%WRAPPER_BASE_DIR%/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=9404:%WRAPPER_BASE_DIR%/exporter/jmx_exporter.yml" "${target_home}/wrapper-single/conf/wrapper-additional.conf" && \
 
     find ${target_home}/wrapper-single | xargs touch && \
     find ${target_home}/wrapper-single -type d -print | xargs chmod 755 && \
@@ -201,7 +201,7 @@ fun_build_with_jre_windows() {
 
     wget -c -O ${target_home}/wrapper-single/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar --no-check-certificate ${jmx_exporter_url} && \
     \cp -rf ${base_dir}/assets/jmx_exporter.yml ${target_home}/wrapper-single/exporter/ && \
-    sed -i "/^-server$/i\-javaagent:../exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=8090:../exporter/jmx_exporter.yml" "${target_home}/wrapper-single/conf/wrapper-additional.conf" && \
+    sed -i "/^-server$/i\-javaagent:%WRAPPER_BASE_DIR%/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=9404:%WRAPPER_BASE_DIR%/exporter/jmx_exporter.yml" "${target_home}/wrapper-single/conf/wrapper-additional.conf" && \
 
     find ${target_home}/wrapper-single | xargs touch && \
     find ${target_home}/wrapper-single -type d -print | xargs chmod 755 && \

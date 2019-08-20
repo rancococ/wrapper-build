@@ -79,7 +79,7 @@ catalina_ws_url=https://mirrors.huaweicloud.com/apache/tomcat/tomcat-8/v8.5.40/b
 tomcat_extend_url=https://github.com/rancococ/tomcat-ext/releases/download/v1.0.0/tomcat-extend-1.0.0-SNAPSHOT.jar
 log4j2_url=https://mirrors.huaweicloud.com/apache/logging/log4j/2.11.1/apache-log4j-2.11.1-bin.tar.gz
 
-tomcat_version=8.5.40.9
+tomcat_version=8.5.40.10
 
 arch=x86_64
 
@@ -106,7 +106,7 @@ fun_build_without_jre() {
 
     wget -c -O ${target_home}/wrapper-tomcat/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar --no-check-certificate ${jmx_exporter_url} && \
     \cp -rf ${base_dir}/assets/jmx_exporter.yml ${target_home}/wrapper-tomcat/exporter/ && \
-    sed -i "/^-server$/i\-javaagent:../exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=8090:../exporter/jmx_exporter.yml" "${target_home}/wrapper-tomcat/conf/wrapper-additional.conf" && \
+    sed -i "/^-server$/i\-javaagent:%WRAPPER_BASE_DIR%/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=9404:%WRAPPER_BASE_DIR%/exporter/jmx_exporter.yml" "${target_home}/wrapper-tomcat/conf/wrapper-additional.conf" && \
 
     wget -c -O ${source_home}/tomcat.tar.gz --no-check-certificate ${tomcat_url} && \
     tar -zxf ${source_home}/tomcat.tar.gz -C ${source_home} && \
@@ -192,7 +192,7 @@ fun_build_with_jre_linux() {
 
     wget -c -O ${target_home}/wrapper-tomcat/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar --no-check-certificate ${jmx_exporter_url} && \
     \cp -rf ${base_dir}/assets/jmx_exporter.yml ${target_home}/wrapper-tomcat/exporter/ && \
-    sed -i "/^-server$/i\-javaagent:../exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=8090:../exporter/jmx_exporter.yml" "${target_home}/wrapper-tomcat/conf/wrapper-additional.conf" && \
+    sed -i "/^-server$/i\-javaagent:%WRAPPER_BASE_DIR%/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=9404:%WRAPPER_BASE_DIR%/exporter/jmx_exporter.yml" "${target_home}/wrapper-tomcat/conf/wrapper-additional.conf" && \
 
     wget -c -O ${source_home}/tomcat.tar.gz --no-check-certificate ${tomcat_url} && \
     tar -zxf ${source_home}/tomcat.tar.gz -C ${source_home} && \
@@ -278,7 +278,7 @@ fun_build_with_jre_windows() {
 
     wget -c -O ${target_home}/wrapper-tomcat/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar --no-check-certificate ${jmx_exporter_url} && \
     \cp -rf ${base_dir}/assets/jmx_exporter.yml ${target_home}/wrapper-tomcat/exporter/ && \
-    sed -i "/^-server$/i\-javaagent:../exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=8090:../exporter/jmx_exporter.yml" "${target_home}/wrapper-tomcat/conf/wrapper-additional.conf" && \
+    sed -i "/^-server$/i\-javaagent:%WRAPPER_BASE_DIR%/exporter/jmx_prometheus_javaagent-${jmx_exporter_version}.jar=9404:%WRAPPER_BASE_DIR%/exporter/jmx_exporter.yml" "${target_home}/wrapper-tomcat/conf/wrapper-additional.conf" && \
 
     wget -c -O ${source_home}/tomcat.tar.gz --no-check-certificate ${tomcat_url} && \
     tar -zxf ${source_home}/tomcat.tar.gz -C ${source_home} && \
