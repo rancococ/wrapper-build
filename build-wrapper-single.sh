@@ -71,7 +71,7 @@ wrapper_url=https://github.com/rancococ/wrapper/archive/v3.5.39.2.tar.gz
 jmx_exporter_version=0.12.0
 jmx_exporter_url=https://mirrors.huaweicloud.com/repository/maven/io/prometheus/jmx/jmx_prometheus_javaagent/${jmx_exporter_version}/jmx_prometheus_javaagent-${jmx_exporter_version}.jar
 
-single_version=1.0.6
+single_version=1.0.7
 
 arch=x86_64
 
