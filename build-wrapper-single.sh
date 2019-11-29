@@ -64,9 +64,9 @@ target_home=/tmp/${uuid_name}/target
 serverjre_linux=server-jre-8u192-linux-x64.tar.gz
 serverjre_windows=server-jre-8u192-windows-x64.tar.gz
 
-wrapper_version=3.5.39.2
-wrapper_name=wrapper-3.5.39.2.tar.gz
-wrapper_url=https://github.com/rancococ/wrapper/archive/v3.5.39.2.tar.gz
+wrapper_version=3.5.41.1
+wrapper_name=wrapper-3.5.41.1.tar.gz
+wrapper_url=https://github.com/rancococ/wrapper/archive/v3.5.41.1.tar.gz
 
 jmx_exporter_version=0.12.0
 jmx_exporter_url=https://mirrors.huaweicloud.com/repository/maven/io/prometheus/jmx/jmx_prometheus_javaagent/${jmx_exporter_version}/jmx_prometheus_javaagent-${jmx_exporter_version}.jar
