@@ -61,12 +61,16 @@ uuid_home=/tmp/${uuid_name}
 source_home=/tmp/${uuid_name}/source
 target_home=/tmp/${uuid_name}/target
 
+version=3.5.43.4
+jre_version=1.8.192
+tomcat_version=8.5.57
+wrapper_version=3.5.43.4
+
 serverjre_linux=server-jre-8u192-linux-x64.tar.gz
 serverjre_windows=server-jre-8u192-windows-x64.tar.gz
 
-wrapper_version=3.5.43.4
-wrapper_name=wrapper-tomcat-${wrapper_version}.tar.gz
-wrapper_url=https://github.com/rancococ/wrapper/archive/tomcat-${wrapper_version}.tar.gz
+wrapper_name=wrapper-tomcat-${version}.tar.gz
+wrapper_url=https://github.com/rancococ/wrapper/archive/tomcat-${version}.tar.gz
 
 arch=x86_64
 
@@ -84,28 +88,36 @@ fun_build_without_jre() {
     wrappername=$(tar -tf ${source_home}/wrapper.tar.gz | awk -F "/" '{print $1}' | sed -n '1p') && \
     \cp -rf ${source_home}/${wrappername}/. ${target_home}/wrapper-tomcat && \
 
+    find ${target_home}/wrapper-tomcat -type f -name ".gitignore" | xargs rm -rf && \
+    find ${target_home}/wrapper-tomcat -type f -name ".keep" | xargs rm -rf && \
+
     find ${target_home}/wrapper-tomcat | xargs touch && \
     find ${target_home}/wrapper-tomcat -type d -print | xargs chmod 755 && \
     find ${target_home}/wrapper-tomcat -type f -print | xargs chmod 644 && \
+
+    touch ${target_home}/wrapper-tomcat/bin/version && \
+    echo "jre:${jre_version}" >> ${target_home}/wrapper-tomcat/bin/version && \
+    echo "tomcat:${tomcat_version}" >> ${target_home}/wrapper-tomcat/bin/version && \
+    echo "wrapper:${wrapper_version}" >> ${target_home}/wrapper-tomcat/bin/version && \
 
     chmod 744 ${target_home}/wrapper-tomcat/bin/* && \
     chmod 644 ${target_home}/wrapper-tomcat/bin/*.bat && \
     chmod 644 ${target_home}/wrapper-tomcat/bin/*.exe && \
     chmod 644 ${target_home}/wrapper-tomcat/bin/*.jar && \
     chmod 644 ${target_home}/wrapper-tomcat/bin/*.cnf && \
+    chmod 644 ${target_home}/wrapper-tomcat/bin/version && \
     chmod 600 ${target_home}/wrapper-tomcat/conf/*.password && \
     chmod 777 ${target_home}/wrapper-tomcat/logs && \
     chmod 777 ${target_home}/wrapper-tomcat/temp
 
     mkdir -p ${base_dir}/release
-    tar -C ${target_home} -czf ${base_dir}/release/wrapper-tomcat-${wrapper_version}-all-${arch}.tar.gz wrapper-tomcat
+    tar -C ${target_home} -czf ${base_dir}/release/wrapper-tomcat-${version}-all-${arch}.tar.gz wrapper-tomcat
 
     \rm -rf ${uuid_home}
 
     success "build without jre success."
     return 0;
 }
-
 
 # build with jre linux
 fun_build_with_jre_linux() {
@@ -128,9 +140,17 @@ fun_build_with_jre_linux() {
     wrappername=$(tar -tf ${source_home}/wrapper.tar.gz | awk -F "/" '{print $1}' | sed -n '1p') && \
     \cp -rf ${source_home}/${wrappername}/. ${target_home}/wrapper-tomcat && \
 
+    find ${target_home}/wrapper-tomcat -type f -name ".gitignore" | xargs rm -rf && \
+    find ${target_home}/wrapper-tomcat -type f -name ".keep" | xargs rm -rf && \
+
     find ${target_home}/wrapper-tomcat | xargs touch && \
     find ${target_home}/wrapper-tomcat -type d -print | xargs chmod 755 && \
     find ${target_home}/wrapper-tomcat -type f -print | xargs chmod 644 && \
+
+    touch ${target_home}/wrapper-tomcat/bin/version && \
+    echo "jre:${jre_version}" >> ${target_home}/wrapper-tomcat/bin/version && \
+    echo "tomcat:${tomcat_version}" >> ${target_home}/wrapper-tomcat/bin/version && \
+    echo "wrapper:${wrapper_version}" >> ${target_home}/wrapper-tomcat/bin/version && \
 
     chmod 744 ${target_home}/wrapper-tomcat/jre/bin/* && \
     chmod 744 ${target_home}/wrapper-tomcat/bin/* && \
@@ -138,12 +158,13 @@ fun_build_with_jre_linux() {
     chmod 644 ${target_home}/wrapper-tomcat/bin/*.exe && \
     chmod 644 ${target_home}/wrapper-tomcat/bin/*.jar && \
     chmod 644 ${target_home}/wrapper-tomcat/bin/*.cnf && \
+    chmod 644 ${target_home}/wrapper-tomcat/bin/version && \
     chmod 600 ${target_home}/wrapper-tomcat/conf/*.password && \
     chmod 777 ${target_home}/wrapper-tomcat/logs && \
     chmod 777 ${target_home}/wrapper-tomcat/temp
 
     mkdir -p ${base_dir}/release
-    tar -C ${target_home} -czf ${base_dir}/release/wrapper-tomcat-${wrapper_version}-jre-linux-${arch}.tar.gz wrapper-tomcat
+    tar -C ${target_home} -czf ${base_dir}/release/wrapper-tomcat-${version}-jre-linux-${arch}.tar.gz wrapper-tomcat
 
     \rm -rf ${uuid_home}
 
@@ -172,9 +193,17 @@ fun_build_with_jre_windows() {
     wrappername=$(tar -tf ${source_home}/wrapper.tar.gz | awk -F "/" '{print $1}' | sed -n '1p') && \
     \cp -rf ${source_home}/${wrappername}/. ${target_home}/wrapper-tomcat && \
 
+    find ${target_home}/wrapper-tomcat -type f -name ".gitignore" | xargs rm -rf && \
+    find ${target_home}/wrapper-tomcat -type f -name ".keep" | xargs rm -rf && \
+
     find ${target_home}/wrapper-tomcat | xargs touch && \
     find ${target_home}/wrapper-tomcat -type d -print | xargs chmod 755 && \
     find ${target_home}/wrapper-tomcat -type f -print | xargs chmod 644 && \
+
+    touch ${target_home}/wrapper-tomcat/bin/version && \
+    echo "jre:${jre_version}" >> ${target_home}/wrapper-tomcat/bin/version && \
+    echo "tomcat:${tomcat_version}" >> ${target_home}/wrapper-tomcat/bin/version && \
+    echo "wrapper:${wrapper_version}" >> ${target_home}/wrapper-tomcat/bin/version && \
 
     chmod 744 ${target_home}/wrapper-tomcat/jre/bin/* && \
     chmod 744 ${target_home}/wrapper-tomcat/bin/* && \
@@ -182,12 +211,13 @@ fun_build_with_jre_windows() {
     chmod 644 ${target_home}/wrapper-tomcat/bin/*.exe && \
     chmod 644 ${target_home}/wrapper-tomcat/bin/*.jar && \
     chmod 644 ${target_home}/wrapper-tomcat/bin/*.cnf && \
+    chmod 644 ${target_home}/wrapper-tomcat/bin/version && \
     chmod 600 ${target_home}/wrapper-tomcat/conf/*.password && \
     chmod 777 ${target_home}/wrapper-tomcat/logs && \
     chmod 777 ${target_home}/wrapper-tomcat/temp
 
     mkdir -p ${base_dir}/release
-    tar -C ${target_home} -czf ${base_dir}/release/wrapper-tomcat-${wrapper_version}-jre-windows-${arch}.tar.gz wrapper-tomcat
+    tar -C ${target_home} -czf ${base_dir}/release/wrapper-tomcat-${version}-jre-windows-${arch}.tar.gz wrapper-tomcat
 
     \rm -rf ${uuid_home}
 

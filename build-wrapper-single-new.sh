@@ -61,12 +61,15 @@ uuid_home=/tmp/${uuid_name}
 source_home=/tmp/${uuid_name}/source
 target_home=/tmp/${uuid_name}/target
 
+version=3.5.43.2
+jre_version=1.8.192
+wrapper_version=3.5.43.2
+
 serverjre_linux=server-jre-8u192-linux-x64.tar.gz
 serverjre_windows=server-jre-8u192-windows-x64.tar.gz
 
-wrapper_version=3.5.43.2
-wrapper_name=wrapper-single-${wrapper_version}.tar.gz
-wrapper_url=https://github.com/rancococ/wrapper/archive/single-${wrapper_version}.tar.gz
+wrapper_name=wrapper-single-${version}.tar.gz
+wrapper_url=https://github.com/rancococ/wrapper/archive/single-${version}.tar.gz
 
 arch=x86_64
 
@@ -84,21 +87,29 @@ fun_build_without_jre() {
     wrappername=$(tar -tf ${source_home}/wrapper.tar.gz | awk -F "/" '{print $1}' | sed -n '1p') && \
     \cp -rf ${source_home}/${wrappername}/. ${target_home}/wrapper-single && \
 
+    find ${target_home}/wrapper-single -type f -name ".gitignore" | xargs rm -rf && \
+    find ${target_home}/wrapper-single -type f -name ".keep" | xargs rm -rf && \
+
     find ${target_home}/wrapper-single | xargs touch && \
     find ${target_home}/wrapper-single -type d -print | xargs chmod 755 && \
     find ${target_home}/wrapper-single -type f -print | xargs chmod 644 && \
+
+    touch ${target_home}/wrapper-single/bin/version && \
+    echo "jre:${jre_version}" >> ${target_home}/wrapper-single/bin/version && \
+    echo "wrapper:${wrapper_version}" >> ${target_home}/wrapper-single/bin/version && \
 
     chmod 744 ${target_home}/wrapper-single/bin/* && \
     chmod 644 ${target_home}/wrapper-single/bin/*.bat && \
     chmod 644 ${target_home}/wrapper-single/bin/*.exe && \
     chmod 644 ${target_home}/wrapper-single/bin/*.jar && \
     chmod 644 ${target_home}/wrapper-single/bin/*.cnf && \
+    chmod 644 ${target_home}/wrapper-single/bin/version && \
     chmod 600 ${target_home}/wrapper-single/conf/*.password && \
     chmod 777 ${target_home}/wrapper-single/logs && \
     chmod 777 ${target_home}/wrapper-single/temp
 
     mkdir -p ${base_dir}/release
-    tar -C ${target_home} -czf ${base_dir}/release/wrapper-single-${wrapper_version}-all-${arch}.tar.gz wrapper-single
+    tar -C ${target_home} -czf ${base_dir}/release/wrapper-single-${version}-all-${arch}.tar.gz wrapper-single
 
     \rm -rf ${uuid_home}
 
@@ -127,9 +138,16 @@ fun_build_with_jre_linux() {
     wrappername=$(tar -tf ${source_home}/wrapper.tar.gz | awk -F "/" '{print $1}' | sed -n '1p') && \
     \cp -rf ${source_home}/${wrappername}/. ${target_home}/wrapper-single && \
 
+    find ${target_home}/wrapper-single -type f -name ".gitignore" | xargs rm -rf && \
+    find ${target_home}/wrapper-single -type f -name ".keep" | xargs rm -rf && \
+
     find ${target_home}/wrapper-single | xargs touch && \
     find ${target_home}/wrapper-single -type d -print | xargs chmod 755 && \
     find ${target_home}/wrapper-single -type f -print | xargs chmod 644 && \
+
+    touch ${target_home}/wrapper-single/bin/version && \
+    echo "jre:${jre_version}" >> ${target_home}/wrapper-single/bin/version && \
+    echo "wrapper:${wrapper_version}" >> ${target_home}/wrapper-single/bin/version && \
 
     chmod 744 ${target_home}/wrapper-single/jre/bin/* && \
     chmod 744 ${target_home}/wrapper-single/bin/* && \
@@ -137,12 +155,13 @@ fun_build_with_jre_linux() {
     chmod 644 ${target_home}/wrapper-single/bin/*.exe && \
     chmod 644 ${target_home}/wrapper-single/bin/*.jar && \
     chmod 644 ${target_home}/wrapper-single/bin/*.cnf && \
+    chmod 644 ${target_home}/wrapper-single/bin/version && \
     chmod 600 ${target_home}/wrapper-single/conf/*.password && \
     chmod 777 ${target_home}/wrapper-single/logs && \
     chmod 777 ${target_home}/wrapper-single/temp
 
     mkdir -p ${base_dir}/release
-    tar -C ${target_home} -czf ${base_dir}/release/wrapper-single-${wrapper_version}-jre-linux-${arch}.tar.gz wrapper-single
+    tar -C ${target_home} -czf ${base_dir}/release/wrapper-single-${version}-jre-linux-${arch}.tar.gz wrapper-single
 
     \rm -rf ${uuid_home}
 
@@ -171,9 +190,16 @@ fun_build_with_jre_windows() {
     wrappername=$(tar -tf ${source_home}/wrapper.tar.gz | awk -F "/" '{print $1}' | sed -n '1p') && \
     \cp -rf ${source_home}/${wrappername}/. ${target_home}/wrapper-single && \
 
+    find ${target_home}/wrapper-single -type f -name ".gitignore" | xargs rm -rf && \
+    find ${target_home}/wrapper-single -type f -name ".keep" | xargs rm -rf && \
+
     find ${target_home}/wrapper-single | xargs touch && \
     find ${target_home}/wrapper-single -type d -print | xargs chmod 755 && \
     find ${target_home}/wrapper-single -type f -print | xargs chmod 644 && \
+
+    touch ${target_home}/wrapper-single/bin/version && \
+    echo "jre:${jre_version}" >> ${target_home}/wrapper-single/bin/version && \
+    echo "wrapper:${wrapper_version}" >> ${target_home}/wrapper-single/bin/version && \
 
     chmod 744 ${target_home}/wrapper-single/jre/bin/* && \
     chmod 744 ${target_home}/wrapper-single/bin/* && \
@@ -181,12 +207,13 @@ fun_build_with_jre_windows() {
     chmod 644 ${target_home}/wrapper-single/bin/*.exe && \
     chmod 644 ${target_home}/wrapper-single/bin/*.jar && \
     chmod 644 ${target_home}/wrapper-single/bin/*.cnf && \
+    chmod 644 ${target_home}/wrapper-single/bin/version && \
     chmod 600 ${target_home}/wrapper-single/conf/*.password && \
     chmod 777 ${target_home}/wrapper-single/logs && \
     chmod 777 ${target_home}/wrapper-single/temp
 
     mkdir -p ${base_dir}/release
-    tar -C ${target_home} -czf ${base_dir}/release/wrapper-single-${wrapper_version}-jre-windows-${arch}.tar.gz wrapper-single
+    tar -C ${target_home} -czf ${base_dir}/release/wrapper-single-${version}-jre-windows-${arch}.tar.gz wrapper-single
 
     \rm -rf ${uuid_home}
 
