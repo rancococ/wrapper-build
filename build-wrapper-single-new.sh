@@ -61,9 +61,9 @@ uuid_home=/tmp/${uuid_name}
 source_home=/tmp/${uuid_name}/source
 target_home=/tmp/${uuid_name}/target
 
-version=3.5.43.2
+version=3.5.43.5
 jre_version=1.8.192
-wrapper_version=3.5.43.2
+wrapper_version=3.5.43.5
 
 serverjre_linux=server-jre-8u192-linux-x64.tar.gz
 serverjre_windows=server-jre-8u192-windows-x64.tar.gz
